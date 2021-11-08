@@ -1,4 +1,9 @@
+import javax.swing.*;
+import java.text.DecimalFormat;
+
 public class WidgetFactory {
+    static double payout = 16.50;
+
 
     /*
     Lessons L1 - L3
@@ -28,4 +33,29 @@ public class WidgetFactory {
      Profit: $760.00
 
      */
+    public static void main(String[] args) {
+        int daysWorked = Integer.parseInt(JOptionPane.showInputDialog("How many days were worked?"));
+        costOfProduction(daysWorked);
+        profit(daysWorked);
+
+        System.exit(0);
+
+    }
+
+    public static void costOfProduction(int daysWorked){
+       payout = 16.50 * 8 * 10 * daysWorked;
+
+    }
+
+    public static void profit(int daysWorked){
+        DecimalFormat round = new DecimalFormat("#,###.##");
+        int numOfWidgets = Integer.parseInt(JOptionPane.showInputDialog("How many widgets were made?"));
+        int revenue = numOfWidgets * 10;
+        double profit = revenue - payout;
+
+        JOptionPane.showMessageDialog(null,"Number of Widgets: " + round.format(numOfWidgets) + "\n# of Days: " + round.format(daysWorked) + "\nCost of Widgets: $" + round.format(revenue) + "\nCost of Production : $" + round.format(payout) + "\nProfit: $" + round.format(profit));
+
+
+
+    }
 }
